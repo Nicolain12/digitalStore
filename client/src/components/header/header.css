@@ -1,0 +1,10 @@
+.component-header{
+    border: 1px solid black;
+    width: 100%;
+}
+
+@media (min-width: 724px) {
+    .component-header{
+        width: 80%;
+    }
+}
