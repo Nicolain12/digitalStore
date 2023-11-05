@@ -27,12 +27,12 @@ function header({ nameClass }) {
           </div> */}
           {/* Logged */}
           <div className="h-profile-options-div">
-            <Link className='h-profile-links' to={'#'}><i class="fa-solid fa-cart-shopping"></i></Link>
-            <Link className='h-profile-links' to={'#'}><i class="fa-regular fa-user"></i></Link>
+            <Link style={{ textDecoration: 'none' }} className='h-profile-links' to={'#'}><i className="fa-solid fa-cart-shopping" ></i>3</Link>
+            <Link className='h-profile-links' to={'#'}><i className="fa-regular fa-user"></i></Link>
           </div>
         </div>
         <div className="h-burgermenu-div">
-          <i class="fa-solid fa-bars"></i>
+          <i className="fa-solid fa-bars"></i>
         </div>
       </header>
     </div>
