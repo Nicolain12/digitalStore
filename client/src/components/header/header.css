@@ -1,10 +1,147 @@
-.component-header{
-    border: 1px solid black;
+.component-header {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+header {
+    width: 100%;
+    height: 10vh;
+    background-color: #213555;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/********************** LOGO **********************/
+.h-logo-div {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.h-logo-div h1{
+    color: white;
+}
+
+/********************** LINKs **********************/
+.h-links-div {
+    display: none;
+}
+
+/********************** PROFILE **********************/
+.h-profile-menu-div {
+    display: none;
+}
+
+/********************** BurgerMenu **********************/
+.h-burgermenu-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 30%;
+}
+.h-burgermenu-div i {
+    color: white;
+    font-size: 30PX;
+    transition: transform 0.3s; 
+}
+.h-burgermenu-div i:hover {
+        transform: scale(1.2)
+    }
+
+
+
 @media (min-width: 724px) {
-    .component-header{
+    header {
         width: 80%;
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px 6px rgb(0 0 0 / 60%);
+    }
+
+    /********************** LOGO **********************/
+    .h-logo-div {
+        width: 25%;
+    }
+
+    /********************** LINKS **********************/
+    .h-links-div {
+        height: 100%;
+        width: 55%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .h-links-inner-div {
+        height: 100%;
+        width: 75%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .h-links-options {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 1s;
+    }
+
+    .h-links-options:hover {
+        text-decoration: underline;
+    }
+
+    /********************** PROFILE **********************/
+    .h-profile-menu-div {
+        height: 100%;
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .h-profile-options-div {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .h-profile-links {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 1s;
+    }
+    .h-profile-links i {
+        font-size: 30px;
+        transition: transform 0.3s; 
+    }
+
+    .h-profile-links i:hover {
+        transform: scale(1.2)
+    }
+
+    .h-profile-links:hover {
+        text-decoration: underline;
+    }
+    /********************** BurgerMenu **********************/
+    .h-burgermenu-div{
+        display: none;
     }
 }
+
+@media (min-width: 850px){
+    .h-links-options,
+    .h-profile-links{
+        font-size: 20px;
+    }
+    }
