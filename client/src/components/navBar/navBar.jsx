@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './header.css'
+import './navBar.css'
+import CartWidget from '../cart/cartWidget/cartWidget';
 
 
 
-function header({ nameClass }) {
+function navBar({ nameClass }) {
 
   return (
     <div className="component-header">
       <header>
         <div className="h-logo-div">
-          <h1>LOGO</h1>
+          <img onClick={()=>window.location = '/'} className='h-logo-img' src="../../../public/logo/mainLogo.png" alt="" />
         </div>
         <div className="h-links-div">
           <div className="h-links-inner-div">
@@ -27,7 +28,7 @@ function header({ nameClass }) {
           </div> */}
           {/* Logged */}
           <div className="h-profile-options-div">
-            <Link style={{ textDecoration: 'none' }} className='h-profile-links' to={'#'}><i className="fa-solid fa-cart-shopping" ></i>3</Link>
+            <CartWidget className='h-profile-links' />
             <Link className='h-profile-links' to={'#'}><i className="fa-regular fa-user"></i></Link>
           </div>
         </div>
@@ -39,4 +40,4 @@ function header({ nameClass }) {
   )
 }
 
-export default header
+export default navBar

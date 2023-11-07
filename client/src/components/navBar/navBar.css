@@ -22,8 +22,10 @@ header {
     justify-content: center;
     align-items: center;
 }
-.h-logo-div h1{
-    color: white;
+
+.h-logo-img {
+    height: 80%;
+    cursor: pointer;
 }
 
 /********************** LINKs **********************/
@@ -119,20 +121,20 @@ header {
         color: white;
         font-size: 20px;
         cursor: pointer;
-        transition: all 1s;
+        transition: transform 0.5s;
     }
     .h-profile-links i {
         font-size: 30px;
-        transition: transform 0.3s; 
+        transition: transform 0.5s; 
     }
 
     .h-profile-links i:hover {
         transform: scale(1.2)
     }
-
-    .h-profile-links:hover {
-        text-decoration: underline;
+.h-profile-links:hover {
+        transform: scale(1.2)
     }
+
     /********************** BurgerMenu **********************/
     .h-burgermenu-div{
         display: none;

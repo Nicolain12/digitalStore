@@ -1,5 +1,8 @@
 # colors:
-    - #213555
-    - #4F709C
-    - #D8C4B6
-    - #F5EFE7
+    Header
+        - #213555
+    Info
+        - #4F709C
+        - #D8C4B6
+    App Background
+        - #F5EFE7
