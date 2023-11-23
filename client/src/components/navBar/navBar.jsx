@@ -6,10 +6,29 @@ import CartWidget from '../cart/cartWidget/cartWidget';
 
 
 function navBar({ nameClass }) {
+  // Use States
+const [scrolling, setScrolling] = useState(false)
+
+// Functions
+// SCROLL
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setScrolling(true)
+    } else {
+      setScrolling(false)
+    }
+  }
+
+  useEffect(()=>{
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  },[])
 
   return (
     <div className="component-header">
-      <header>
+      <header className={scrolling ? 'headerScrolling' : 'header'}>
         <div className="h-logo-div">
           <img onClick={()=>window.location = '/'} className='h-logo-img' src="../../../public/logo/mainLogo.png" alt="" />
         </div>

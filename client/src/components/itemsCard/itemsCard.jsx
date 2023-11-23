@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './itemsCard.css'
 
 function itemsCard(props) {
+    const [cartStatus, setCartStatus] = useState(false)
     return (
         <article className='ic-main-card-div'>
             <div className="ic-img-div">
@@ -16,8 +17,16 @@ function itemsCard(props) {
                     <p className="ic-action-price">$9,999</p>
                 </div>
                 <div className="ic-actions-buttons-div">
-                    <div className='ic-action-button'><i className="fa-solid fa-cart-shopping ic-item" ></i></div>
+                    {cartStatus ? <div className='ic-action-cart-button-div'>
+                        <button className='ic-action-cart-button'><i class="fa-solid fa-plus"></i></button>
+                        <p className='ic-action-cart-counter'>1</p>
+                        <button className='ic-action-cart-button'><i onClick={()=>setCartStatus(false)} class="fa-solid fa-minus"></i></button>
+                    </div> : <div className='ic-action-button'><i onClick={()=>setCartStatus(true)} className="fa-solid fa-cart-shopping ic-item" ></i></div>}
+
                 </div>
+            </div>
+            <div className="ic-actions-cart-div">
+
             </div>
         </article>
     );
