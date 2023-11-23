@@ -18,9 +18,9 @@ function itemsCard(props) {
                 </div>
                 <div className="ic-actions-buttons-div">
                     {cartStatus ? <div className='ic-action-cart-button-div'>
-                        <button className='ic-action-cart-button'><i class="fa-solid fa-plus"></i></button>
-                        <p className='ic-action-cart-counter'>1</p>
                         <button className='ic-action-cart-button'><i onClick={()=>setCartStatus(false)} class="fa-solid fa-minus"></i></button>
+                        <p className='ic-action-cart-counter'>1</p>
+                        <button className='ic-action-cart-button'><i class="fa-solid fa-plus"></i></button>
                     </div> : <div className='ic-action-button'><i onClick={()=>setCartStatus(true)} className="fa-solid fa-cart-shopping ic-item" ></i></div>}
 
                 </div>

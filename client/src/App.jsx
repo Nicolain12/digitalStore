@@ -9,8 +9,17 @@ function App() {
     <div className='App'>
     <NavBar/>
       <Routes>
+        <Route exact path="/" element={<Home />} >
         {/****************** HOME ******************/}
-        <Route exact path="/" element={<Home />} />
+        {/****************** PRODUCTS ******************/}
+          {/* All Products */}
+          {/* By Muscle */}
+          {/* Cart */}
+        {/****************** USER ******************/}
+          {/* Profile */}
+          {/* Loggin */}
+          {/* Register */}
+        </Route>
       </Routes>
   </div>
     

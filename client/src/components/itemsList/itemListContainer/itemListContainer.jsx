@@ -11,6 +11,22 @@ function itemListContainer(props) {
             <ItemsCard/>
             <ItemsCard/>
             <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
+            <ItemsCard/>
         </div>
         </div>
     );
