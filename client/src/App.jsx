@@ -1,29 +1,28 @@
-import React from 'react'
-import { Routes, Route , useLocation } from 'react-router-dom'
-import Home from './screen/Home/home'
-import NavBar from './components/navBar/navBar'
-import './App.css'
+import React from 'react';
+import { Routes, BrowserRouter, Route } from 'react-router-dom';
+import Home from './screen/Home/home';
+import Layout from './screen/layout/layout';
+import './App.css';
 
 function App() {
   return (
-    <div className='App'>
-    <NavBar/>
+    <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home />} >
-        {/****************** HOME ******************/}
-        {/****************** PRODUCTS ******************/}
+        <Route path="/" element={<Layout />}>
+          {/* HOME */}
+          <Route index element={<Home />} />
+          {/* PRODUCTS */}
           {/* All Products */}
           {/* By Muscle */}
           {/* Cart */}
-        {/****************** USER ******************/}
+          {/* USER */}
           {/* Profile */}
           {/* Loggin */}
           {/* Register */}
         </Route>
       </Routes>
-  </div>
-    
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
