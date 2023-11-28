@@ -14,6 +14,7 @@
 .ic-img-div,
 .ic-info-div {
     width: 90%;
+    height: 50%;
 }
 
 .ic-product-img {
@@ -25,6 +26,8 @@
     display: flex;
     flex-direction: column;
     padding: 2%;
+    width: 90%;
+    height: 25%;
 }
 
 /* name */
@@ -43,6 +46,7 @@
 /*********************** ACTION ***********************/
 .ic-action-div {
     width: 90%;
+    height: 25%;
     padding: 2%;
     display: flex;
     align-items: center;
@@ -83,7 +87,7 @@
 .ic-action-button i {
     color: #4F709C;
     font-size: 20px;
-    position: absolute;
+
 }
 
 .ic-action-button:hover {
@@ -96,6 +100,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .ic-action-cart-button-div {
     border: 1px solid #4F709C;
     padding: 0;
@@ -118,16 +123,19 @@
     align-items: center;
     cursor: pointer;
 }
+
 .ic-action-cart-button i {
     font-size: 14px;
 }
-.ic-action-cart-button:hover i{
+
+.ic-action-cart-button:hover i {
     transform: scale(1.1);
 }
 
-.ic-action-cart-counter{
+.ic-action-cart-counter {
     margin: 0;
 }
+
 @media (min-width: 724px) {
     .ic-main-card-div {
         cursor: pointer;
@@ -174,5 +182,6 @@
     .ic-main-card-div {
         padding: 1%;
         width: 20%;
+        min-height: 280px;
     }
 }

@@ -7,7 +7,7 @@ function home() {
     return (
         <div className='screen-home'>
             <h1>Banner here</h1>
-            <ItemListContainer containerTitle={'Items Container'}/>
+            <ItemListContainer containerTitle={'On sale'} onSale={true}/>
         </div>
     )
 }

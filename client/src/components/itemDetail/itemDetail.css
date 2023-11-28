@@ -1,0 +1,13 @@
+.id-component {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 724px) {
+    .id-component {
+        width: 70%;
+    }
+}

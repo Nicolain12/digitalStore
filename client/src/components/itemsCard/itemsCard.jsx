@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 import './itemsCard.css'
 
-function itemsCard(props) {
+function itemsCard({id, name, muscle, price, image}) {
     const [cartStatus, setCartStatus] = useState(false)
+    const itemOnClick = () =>{
+        window.location.href = `/item/${id}`
+    }
     return (
-        <article className='ic-main-card-div'>
+        <article onClick={itemOnClick} className='ic-main-card-div'>
             <div className="ic-img-div">
-                <img className='ic-product-img' src="https://www.ironcompany.com/media/catalog/product/cache/0497f845716ff9ff5fb3d560ec6f3888/l/e/legend-3906-comptetition-bench-press.jpg" alt="" />
+                <img className='ic-product-img' src={image} alt="" />
             </div>
             <div className='ic-info-div'>
-                <h4 className='ic-info-name'>Bench Press</h4>
-                <p className='ic-info-muscle'>Pecho</p>
+                <h4 className='ic-info-name'>{name}</h4>
+                <p className='ic-info-muscle'>{muscle}</p>
             </div>
             <div className="ic-action-div">
                 <div className="ic-action-price-div">
-                    <p className="ic-action-price">$9,999</p>
+                    <p className="ic-action-price">${price}</p>
                 </div>
                 <div className="ic-actions-buttons-div">
                     {cartStatus ? <div className='ic-action-cart-button-div'>

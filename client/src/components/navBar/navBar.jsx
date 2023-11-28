@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import './navBar.css'
 import CartWidget from '../cart/cartWidget/cartWidget';
 
-
-
 function navBar({ nameClass }) {
   // Use States
 const [scrolling, setScrolling] = useState(false)
@@ -19,6 +17,7 @@ const [scrolling, setScrolling] = useState(false)
     }
   }
 
+  // UseEffect
   useEffect(()=>{
     window.addEventListener('scroll', handleScroll)
     return () => {
@@ -34,8 +33,8 @@ const [scrolling, setScrolling] = useState(false)
         </div>
         <div className="h-links-div">
           <div className="h-links-inner-div">
-            <Link className='h-links-options' to={'#'}>All Products</Link>
-            <Link className='h-links-options' to={'#'}>Hot sale</Link>
+            <Link className='h-links-options' to={'/allProducts'}>All Products</Link>
+            <Link className='h-links-options' onClick={()=>{window.location.href = '/byMuscle'}}>By Muscle</Link>
             <Link className='h-links-options' to={'#'}>Contact us</Link>
           </div>
         </div>

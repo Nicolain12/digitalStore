@@ -1,28 +1,32 @@
-import React from 'react';
-import { Routes, BrowserRouter, Route } from 'react-router-dom';
-import Home from './screen/Home/home';
-import Layout from './screen/layout/layout';
-import './App.css';
+import React from 'react'
+import { Routes, Route , useLocation } from 'react-router-dom'
+import Home from './screen/Home/home'
+import NavBar from './components/navBar/navBar'
+import AllProductsList from './screen/allProductsList/allProductsList'
+import ItemDetail from './components/itemDetail/itemDetail'
+import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
+    <div className='App'>
+    <NavBar/>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          {/* HOME */}
-          <Route index element={<Home />} />
-          {/* PRODUCTS */}
-          {/* All Products */}
+        <Route exact path="/" element={<Home />} />
+        {/****************** HOME ******************/}
+        {/****************** PRODUCTS ******************/}
+        <Route exact path="/allProducts" element={<AllProductsList/>} />
+        <Route exact path="/byMuscle" element={<AllProductsList byMuscle={true}/>} />
+        <Route exact path="/item/:id" element={<ItemDetail />} />
           {/* By Muscle */}
           {/* Cart */}
-          {/* USER */}
+        {/****************** USER ******************/}
           {/* Profile */}
           {/* Loggin */}
           {/* Register */}
-        </Route>
       </Routes>
-    </BrowserRouter>
-  );
+  </div>
+    
+  )
 }
 
-export default App;
+export default App
