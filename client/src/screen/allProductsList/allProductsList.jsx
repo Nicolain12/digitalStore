@@ -29,7 +29,7 @@ function allProductsList({byMuscle}) {
     return (
         <div className='apl-component'>
             {byMuscle ? <ByMuscleSearch searchVaues={searchVaues} setSearchVaues={setSearchVaues} /> : null}
-            {byMuscle ? <ItemListContainer containerTitle={'By Muscle'} byMuscle={true} filteredProducts={filProd}  /> : <ItemListContainer containerTitle={'All Products'} allProducts={true} />}
+            {byMuscle ? <ItemListContainer containerTitle={'All Products'} byMuscle={true} filteredProducts={filProd}  /> : <ItemListContainer containerTitle={'All Products'} allProducts={true} />}
 
             
         </div>

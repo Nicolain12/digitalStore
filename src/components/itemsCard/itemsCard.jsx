@@ -10,11 +10,10 @@ function itemsCard({ id, name, muscle, price, image }) {
 
     const { addItem, rmvItem, isInItem } = useContext(DataContext);
 
-    useEffect(()=>{
-        const cartAmount = isInItem(id)
-        cartAmount > 0 ? setCartCount(cartAmount) : setCartCount(0)
-    }, [])
-
+    useEffect(() => {
+        const cartAmount = isInItem(id);
+        cartAmount > 0 ? setCartCount(cartAmount) : setCartCount(0);
+    }, [id, isInItem]);
 
     return (
         <article onClick={itemOnClick} className='ic-main-card-div'>

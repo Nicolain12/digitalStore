@@ -1,10 +1,20 @@
-import { count } from 'firebase/firestore';
-import React, { useState, useEffect, createContext } from 'react'; 
+import React, { useState, useEffect, createContext, memo } from 'react'; 
 
 export const DataContext = createContext()
 
-function contextCart({ children, cartChange }) {
-    const [productsCart, setProductsCart] = useState({})
+function contextCart({ children }) {
+   const [productsCart, setProductsCart] = useState({})
+
+    useEffect(() => {
+        // Code inside this block will run only once when the component mounts
+        console.log(`Component context mounted ${new Date().toLocaleTimeString()}`);
+
+        // Any cleanup code can be added here if needed
+        return () => {
+          console.log('Component context will unmount');
+          // Cleanup code (if any)
+        };
+      }, [])
 
     const addItem = (id, counter) => {
         const objKeys = Object.getOwnPropertyNames(productsCart)

@@ -1,0 +1,12 @@
+.screen-home{
+    width: 100%;
+    padding: 0 2%;
+}
+
+
+@media (min-width: 724px){
+ .screen-home{
+    width: 80%;
+    padding: 0;
+ }
+}
