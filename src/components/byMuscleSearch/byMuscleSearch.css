@@ -1,5 +1,6 @@
 .bms-component {
     display: none;
+    z-index: 5;
 }
 
 @media (min-width: 724px) {

@@ -1,6 +1,7 @@
 .ilc-card-container-div{
     width: 100%;
     display: flex;
+    margin-top: 5%;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;

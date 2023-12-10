@@ -30,7 +30,7 @@ function itemListContainer({ containerTitle, allProducts, onSale, byMuscle, filt
 
     return (
         <div>
-            <h2>{containerTitle}</h2>
+            {/* <h2>{containerTitle}</h2> */}
             <div className="ilc-card-container-div">
                 {allProducts ?
                     dbContent.map(product => (
