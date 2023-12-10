@@ -1,4 +1,6 @@
 .ic-main-card-div {
+    text-decoration: none;
+    color: black;
     border-radius: 10px;
     padding: 5% 1%;
     margin: 5% 0;

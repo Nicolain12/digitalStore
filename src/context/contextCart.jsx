@@ -1,25 +1,19 @@
-import React, { useState, useEffect, createContext, memo } from 'react'; 
+import React, { useState, useEffect, createContext, memo } from 'react';
 
 export const DataContext = createContext()
 
 function contextCart({ children }) {
-   const [productsCart, setProductsCart] = useState({})
-
+    const [productsCart, setProductsCart] = useState({})
+    const [cartLength, setCartLength] = useState(Object.getOwnPropertyNames(productsCart).length);
+   
     useEffect(() => {
-        // Code inside this block will run only once when the component mounts
-        console.log(`Component context mounted ${new Date().toLocaleTimeString()}`);
-
-        // Any cleanup code can be added here if needed
-        return () => {
-          console.log('Component context will unmount');
-          // Cleanup code (if any)
-        };
-      }, [])
+        updateCartLength()
+    }, [productsCart])
 
     const addItem = (id, counter) => {
         const objKeys = Object.getOwnPropertyNames(productsCart)
         if (objKeys.length > 0) {
-            if (objKeys.includes(id.toString())) {
+            if (objKeys.includes(id)) {
                 const newObj = productsCart
                 newObj[id] = ++newObj[id]
                 counter(newObj[id])
@@ -36,10 +30,11 @@ function contextCart({ children }) {
             counter(iniObj[id])
             setProductsCart(iniObj)
         }
+        updateCartLength();
     }
     const rmvItem = (id, counter) => {
         const objKeys = Object.getOwnPropertyNames(productsCart)
-        if (objKeys.length > 0 && objKeys.includes(id.toString())) {
+        if (objKeys.length > 0 && objKeys.includes(id)) {
             if (productsCart[id] > 1) {
                 const newObj = productsCart
                 newObj[id] = --newObj[id]
@@ -52,21 +47,25 @@ function contextCart({ children }) {
                 setProductsCart(newObj)
             }
         }
+        updateCartLength();
     }
     const isInItem = (id) => {
         const objKeys = Object.getOwnPropertyNames(productsCart)
-        if (objKeys.length > 0 && objKeys.includes(id.toString())) {
+        if (objKeys.length > 0 && objKeys.includes(id)) {
             return productsCart[id]
         } else {
             return 0
         }
     }
-
+    const updateCartLength = () => {
+        setCartLength(Object.getOwnPropertyNames(productsCart).length);
+    };
     const functionsContext = {
         addItem,
         rmvItem,
         isInItem,
-        length: Object.getOwnPropertyNames(productsCart).length
+        productsCart,
+        length: cartLength,
     }
     return (
         <DataContext.Provider value={functionsContext}>

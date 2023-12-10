@@ -1,18 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react';
 import { DataContext } from '../../../context/contextCart';
 import { Link } from 'react-router-dom';
 
-
-function carWidget(props) {
-
-
+function CarWidget(props) {
+  const { length } = useContext(DataContext);
   return (
     <>
       <Link style={{ textDecoration: 'none' }} className={props.className} to={'#'}>
-        <i className="fa-solid fa-cart-shopping" ></i>1000
+        <i className="fa-solid fa-cart-shopping"></i>{length}
       </Link>
     </>
   );
 }
 
-export default carWidget;
+export default CarWidget;

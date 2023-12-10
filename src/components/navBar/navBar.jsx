@@ -29,13 +29,13 @@ const [scrolling, setScrolling] = useState(false)
   return (
     <div className="component-header">
       <header className={scrolling ? 'headerScrolling' : 'header'}>
-        <div className="h-logo-div">
-          <img onClick={()=>window.location = '/'} className='h-logo-img' src="../../../public/logo/mainLogo.png" alt="" />
-        </div>
+          <Link className="h-logo-div" to={'/'}>
+          <img className='h-logo-img' src="../../../public/logo/mainLogo.png" alt="" />
+          </Link>
         <div className="h-links-div">
           <div className="h-links-inner-div">
             <Link className='h-links-options' to={'/allProducts'}>All Products</Link>
-            <Link className='h-links-options' onClick={()=>{window.location.href = '/byMuscle'}}>By Muscle</Link>
+            <Link className='h-links-options' to={'/byMuscle'}>By Muscle</Link>
             <Link className='h-links-options' to={'#'}>Contact us</Link>
           </div>
         </div>
