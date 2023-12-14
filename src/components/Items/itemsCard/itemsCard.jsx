@@ -7,10 +7,6 @@ import { Link } from 'react-router-dom';
 function itemsCard({ id, name, muscle, price, image }) {
     const { addItem, rmvItem, isInItem } = useContext(DataContext);
     const [cartCount, setCartCount] = useState(isInItem(id))
-    const itemOnClick = () => {
-        window.location.href = `/item/${id}`
-    }
-
 
     return (
         <Link  to={`/item/${id}`} className='ic-main-card-div'>

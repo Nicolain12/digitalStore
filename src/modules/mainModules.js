@@ -1,9 +1,22 @@
-// FIREBASE GET FUNCTION
-export const fbGetCall = async (getDocCb, table)=>{
-    const data = await getDocCb(table)
+// FIREBASE GET ALL FUNCTION
+export const dataCompile = async (getDocsCb, databaseColection, stateData) => {
+    const data = await getDocsCb(databaseColection)
     const compileInfo = data.docs.map((doc)=>({
         ...doc.data(),
         id: doc.id
     }))
-    return compileInfo
+    const processedData = compileInfo.map(prod => {
+      let muscleArray;
+      if (typeof prod.muscle === 'string') {
+        try {
+          muscleArray = JSON.parse(prod.muscle.replace(/'/g, '"'));
+        } catch (error) {
+          muscleArray = [prod.muscle];
+        }
+      } else {
+        muscleArray = prod.muscle;
+      }
+      return { ...prod, muscle: muscleArray };
+    });
+    stateData(processedData);
 }

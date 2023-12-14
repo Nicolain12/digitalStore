@@ -3,8 +3,9 @@ import './allProductsList.css'
 import ItemListContainer from '../../components/Items/itemsList/itemListContainer/ItemListContainer';
 import ByMuscleSearch from '../../components/byMuscleSearch/byMuscleSearch';
 import { getDocs, collection } from 'firebase/firestore';
-import { fbGetCall } from '../../modules/mainModules';
 import { db } from '../../config/firebase';
+import { dataCompile } from '../../modules/mainModules';
+import { filterProductsByMuscles } from './allProductsFunctions';
 
 
 function allProductsList({ byMuscle }) {
@@ -13,44 +14,24 @@ function allProductsList({ byMuscle }) {
   const [filProd, setFilProd] = useState([])
 
   // DB conection
-  const databaseColection = collection(db, 'products')
-
-  function filterProductsByMuscles(searchValues, database) {
-    if (searchValues.length === 0) {
-      return database;
-    }
-
-    return database.filter(product => {
-      return (
-        Array.isArray(product.muscle) ?
-          product.muscle.some(muscle => searchValues.includes(muscle)) :
-          searchValues.includes(product.muscle)
-      );
-    });
-  }
+  const databaseColection = collection(db, 'products') 
 
   // USE EFFECT
   // DB info
   useEffect(() => {
-    const dataCompile = async () => {
-      const data = await fbGetCall(getDocs, databaseColection)
-      setDbContent(data)
-    }
-    dataCompile()
+  dataCompile(getDocs, databaseColection, setDbContent)
   }, [])
-
-
+  // Filter logic
   useEffect(() => {
-    setFilProd(filterProductsByMuscles(searchVaues, dbContent))
+    setTimeout(() => {
+      setFilProd(filterProductsByMuscles(searchVaues, dbContent))
+    }, 2000);
   }, [searchVaues, dbContent])
-
 
   return (
     <div className='apl-component'>
       {byMuscle ? <ByMuscleSearch searchVaues={searchVaues} setSearchVaues={setSearchVaues} /> : null}
-      {byMuscle ? <ItemListContainer containerTitle={'By Muscle'} byMuscle={true} filteredProducts={filProd} /> : <ItemListContainer containerTitle={'All Products'} allProducts={true} />}
-
-
+      {byMuscle ? <ItemListContainer containerTitle={'By Muscle'} byMuscle={true} filteredProducts={filProd} /> : <ItemListContainer allProducts={true} />}
     </div>
   );
 }

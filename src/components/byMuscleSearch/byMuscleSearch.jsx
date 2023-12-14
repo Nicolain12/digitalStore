@@ -28,7 +28,7 @@ function byMuscleSearch({ trigger, searchVaues, setSearchVaues }) {
         if (mus === 'Abs') setStatusAbs(!statusAbs)
         if (mus === 'Glutes') setStatusGlute(!statusGlute)
         if (mus === 'Cuads') setStatusCuads(!statusCuads)
-        if (mus === 'Hamstring') setStatusHamstring(!statusHamstring)
+        if (mus === 'Hamstrings') setStatusHamstring(!statusHamstring)
         if (mus === 'Calves') setStatusCalves(!statusCalves)
     }
 

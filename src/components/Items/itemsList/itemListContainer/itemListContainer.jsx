@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import './itemListContainer.css'
 import ItemsCard from '../../itemsCard/itemsCard';
 import { getDocs, collection } from 'firebase/firestore';
-import { fbGetCall } from '../../../../modules/mainModules';
+import { dataCompile } from '../../../../modules/mainModules';
 import { db } from '../../../../config/firebase';
 
-function itemListContainer({ containerTitle, allProducts, onSale, byMuscle, filteredProducts }) {
+function itemListContainer({ allProducts, onSale, byMuscle, filteredProducts }) {
     const [dbContent, setDbContent] = useState([])
     const [ifOnSale, setIfOnSale] = useState([])
+    const [loadingAP, setLoadingAP] = useState(true);
+    const [loadingOP, setLoadingOP] = useState(true);
+    const [loadingFP, setLoadingFP] = useState(true);
 
 
     // DB conection
@@ -16,40 +19,44 @@ function itemListContainer({ containerTitle, allProducts, onSale, byMuscle, filt
     // USE EFFECT
     // DB info
     useEffect(() => {
-        const dataCompile = async () => {
-            const data = await fbGetCall(getDocs, databaseColection)
-            setDbContent(data)
-        }
-        dataCompile()
+        setTimeout(() => { 
+            dataCompile(getDocs, databaseColection, setDbContent)
+            setLoadingAP(false)
+        }, 2000);
     }, [])
     useEffect(() => {
         if (onSale && dbContent.length > 0) {
             setIfOnSale(dbContent.filter(product => product.discount > 0))
+            setLoadingOP(false)
         }
     }, [dbContent])
+    useEffect(() => {
+        byMuscle ? (filteredProducts.length > 0 ? setLoadingFP(false): null) : null
+    }, [filteredProducts])
+
 
     return (
         <div>
-            {/* <h2>{containerTitle}</h2> */}
             <div className="ilc-card-container-div">
                 {allProducts ?
-                    dbContent.map(product => (
-                        <ItemsCard key={product.id} id={product.id} name={product.name} muscle={typeof product.muscle == 'object' ? product.muscle.join(', ') : product.muscle} price={product.price} image={product.image} />
-                    ))
+                    (!loadingAP ? dbContent.map(product => (
+                        <ItemsCard key={product.id} id={product.id} name={product.name} muscle={product.muscle.length > 1 ? product.muscle.join(', ') : product.muscle[0]} price={product.price} image={product.image} />
+                    )) : <h1>LOADING...</h1>)
                     : null}
                 {onSale ?
-                    ifOnSale.map(product => (
-                        <ItemsCard key={product.id} id={product.id} name={product.name} muscle={typeof product.muscle == 'object' ? product.muscle.join(', ') : product.muscle} price={product.price} image={product.image} />
-                    ))
+                    (!loadingOP ? ifOnSale.map(product => (
+                        <ItemsCard key={product.id} id={product.id} name={product.name} muscle={product.muscle.length > 1 ? product.muscle.join(', ') : product.muscle[0]} price={product.price} image={product.image} />
+                    )) : <h1>LOADING...</h1>)
                     : null}
                 {byMuscle ?
-                    filteredProducts.map(product => (
-                        <ItemsCard key={product.id} id={product.id} name={product.name} muscle={typeof product.muscle == 'object' ? product.muscle.join(', ') : product.muscle} price={product.price} image={product.image} />
-                    ))
+                    (!loadingFP ? filteredProducts.map(product => (
+                        <ItemsCard key={product.id} id={product.id} name={product.name} muscle={product.muscle.length > 1 ? `${product.muscle[0]}, ${product.muscle[1]}` : product.muscle[0]} price={product.price} image={product.image} />
+                    )) : <h1>LOADING...</h1>)
                     : null}
             </div>
         </div>
     );
 }
 
-export default itemListContainer;
+
+export default itemListContainer

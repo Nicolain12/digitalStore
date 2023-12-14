@@ -3,7 +3,7 @@ import './itemDetail.css'
 import { useParams } from 'react-router-dom';
 import ItemsCard from '../itemsCard/itemsCard';
 import { getDocs, collection } from 'firebase/firestore';
-import { fbGetCall } from '../../../modules/mainModules';
+import { dataCompile } from '../../../modules/mainModules';
 import { db } from '../../../config/firebase';
 
 function itemDetail(props) {
@@ -17,11 +17,7 @@ function itemDetail(props) {
     // USE EFFECT
     // DB info
     useEffect(() => {
-        const dataCompile = async () => {
-            const data = await fbGetCall(getDocs, databaseColection)
-            setDbContent(data)
-        }
-        dataCompile()
+        dataCompile(getDocs, databaseColection, setDbContent)
     }, [])
     useEffect(() => {
         if ( dbContent.length > 0) {
