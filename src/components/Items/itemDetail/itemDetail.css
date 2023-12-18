@@ -1,13 +1,136 @@
-.id-component {
-    width: 90%;
+.id-main-container {
+    width: 100%;
+    padding: 2%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
+/* IMAGE */
+.id-img-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.id-img {
+    width: 95%;
+}
+
+/* INFO */
+.id-info-div {
+    width: 100%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.id-info-inner-div {
+    width: 100%;
+}
+
+.id-info-inner-div.muscle{
+    border-top: 1px solid gray;
+}
+.id-info-inner-div.description{
+    border-top: 1px solid gray;
+}
+.id-info-inner-div.price{
+    border-top: 1px solid gray;
+}
+
+.id-info-content.name{
+    font-size: 28px;
+    margin: 0;
+}
+
+.id-info-content.muscle.title{
+    margin: 5% 0 2%;
+    font-size: 20px;
+}
+.id-info-content.muscle.content{
+    font-size: 18px;
+    margin:0;
+}
+
+.id-info-content.description.title {
+    margin: 5% 0 2%;
+    font-size: 20px;
+}
+.id-info-content.description.content {
+    font-size: 18px;
+    margin:0;
+}
+
+.id-info-content.price {
+    margin: 5% 0;
+    font-size: 30px;
+}
+
+/* BUTTONS */
+.id-info-inner-div.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.id-button {
+    margin: 0%;
+    height: 2rem;
+    font-size: larger;
+    border: none;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+    color: white;
+}
+
+.id-button:hover {
+    box-shadow: 3px 3px 15px 4px rgba(0, 0, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.id-button.buy {
+    width: 50%;
+    background-color: rgb(88, 86, 86);
+}
+
+.id-button.favorite {
+    width: 20%;
+    background-color: red;
+}
+
+.id-button.cart {
+    width: 20%;
+    background-color: #4F709C
+}
+
+
+
 @media (min-width: 724px) {
-    .id-component {
-        width: 70%;
+    .id-main-container {
+        flex-direction: row;
+        margin-top: 2%;
+        box-shadow: 0px 0px 10px 2px rgb(0, 0, 0.1);
+        border-radius: 15px;
+    }
+
+    .id-img-div {
+        width: 50%;
+    }
+
+    .id-info-div {
+        width: 50%;
+        height: 30em;
+        justify-content: space-between;
+    }
+    .id-info-content.muscle{
+        font-size: 20px;
     }
 }

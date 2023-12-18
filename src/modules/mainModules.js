@@ -1,5 +1,5 @@
 // FIREBASE GET ALL FUNCTION
-export const dataCompile = async (getDocsCb, databaseColection, stateData) => {
+export const dataCompile = async (getDocsCb, databaseColection, stateData, stopLoading) => {
     const data = await getDocsCb(databaseColection)
     const compileInfo = data.docs.map((doc)=>({
         ...doc.data(),
@@ -19,4 +19,5 @@ export const dataCompile = async (getDocsCb, databaseColection, stateData) => {
       return { ...prod, muscle: muscleArray };
     });
     stateData(processedData);
+    stopLoading ? stopLoading(false) : null
 }

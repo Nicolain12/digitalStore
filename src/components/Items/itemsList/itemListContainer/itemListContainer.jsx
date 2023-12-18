@@ -19,10 +19,7 @@ function itemListContainer({ allProducts, onSale, byMuscle, filteredProducts }) 
     // USE EFFECT
     // DB info
     useEffect(() => {
-        setTimeout(() => { 
-            dataCompile(getDocs, databaseColection, setDbContent)
-            setLoadingAP(false)
-        }, 2000);
+        dataCompile(getDocs, databaseColection, setDbContent, setLoadingAP)
     }, [])
     useEffect(() => {
         if (onSale && dbContent.length > 0) {
@@ -31,7 +28,7 @@ function itemListContainer({ allProducts, onSale, byMuscle, filteredProducts }) 
         }
     }, [dbContent])
     useEffect(() => {
-        byMuscle ? (filteredProducts.length > 0 ? setLoadingFP(false): null) : null
+        byMuscle ? (filteredProducts.length > 0 ? setLoadingFP(false) : null) : null
     }, [filteredProducts])
 
 

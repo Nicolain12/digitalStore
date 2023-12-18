@@ -14,18 +14,16 @@ function allProductsList({ byMuscle }) {
   const [filProd, setFilProd] = useState([])
 
   // DB conection
-  const databaseColection = collection(db, 'products') 
+  const databaseColection = collection(db, 'products')
 
   // USE EFFECT
   // DB info
   useEffect(() => {
-  dataCompile(getDocs, databaseColection, setDbContent)
+    dataCompile(getDocs, databaseColection, setDbContent)
   }, [])
   // Filter logic
   useEffect(() => {
-    setTimeout(() => {
       setFilProd(filterProductsByMuscles(searchVaues, dbContent))
-    }, 2000);
   }, [searchVaues, dbContent])
 
   return (

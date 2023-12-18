@@ -1,35 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './itemDetail.css'
-import { useParams } from 'react-router-dom';
-import ItemsCard from '../itemsCard/itemsCard';
-import { getDocs, collection } from 'firebase/firestore';
-import { dataCompile } from '../../../modules/mainModules';
-import { db } from '../../../config/firebase';
 
-function itemDetail(props) {
 
-    const { id } = useParams()
-    const [dbContent, setDbContent] = useState([])
-    const [product, setProduct] =  useState({})
-    // DB conection
-    const databaseColection = collection(db, 'products')
-
-    // USE EFFECT
-    // DB info
-    useEffect(() => {
-        dataCompile(getDocs, databaseColection, setDbContent)
-    }, [])
-    useEffect(() => {
-        if ( dbContent.length > 0) {
-            setProduct(dbContent.find(product => product.id == id))
-        }
-    }, [dbContent])
-
+function itemDetail({product}) {
     return (
-        <div className='id-component'>
-            <p>Para la entrega final prometo armar un estilo personalizado para la muestra del detalle del producto</p>
-            <ItemsCard key={product.id} id={product.id} name={product.name} muscle={typeof product.muscle == 'object' ? product.muscle.join(', ') : product.muscle} price={product.price} image={product.image} />
-        </div>
+            <div className="id-main-container">
+                {/* Article Detail */}
+                <div className="id-img-div">
+                    <img className='id-img' src={product.image} alt="" />
+                </div>
+                <div className="id-info-div">
+                    <div className='id-info-inner-div name'>
+                        <h2 className='id-info-content name'>{product.name}</h2>
+                    </div>
+                    <div className='id-info-inner-div muscle'>
+                        <h4 className='id-info-content muscle title'>Muscle:</h4>
+                        <p className='id-info-content muscle content'>{product.muscle}</p>
+                    </div>
+                    <div className='id-info-inner-div description'>
+                        <h4 className='id-info-content description title'>Details:</h4>
+                        <p className='id-info-content description content'>{product.description}</p>
+                    </div>
+                    <div className='id-info-inner-div price'>
+                        <p className='id-info-content price'>$ {product.price}</p>
+                    </div>
+                    <div className='id-info-inner-div buttons'>
+                        <button className='id-button buy'>buy</button>
+                        <button className='id-button save favorite'>favorite</button>
+                        <button className='id-button save cart'>cart</button>
+                    </div>
+                </div>
+
+            </div>
+        
     );
 }
 

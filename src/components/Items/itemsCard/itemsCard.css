@@ -21,6 +21,7 @@
 
 .ic-product-img {
     width: 100%;
+    height: 100%;
 }
 
 /*********************** INFO ***********************/
@@ -70,6 +71,7 @@
     height: 100%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .ic-action-button {
@@ -104,6 +106,7 @@
 }
 
 .ic-action-cart-button-div {
+    height: fit-content;
     border: 1px solid #4F709C;
     padding: 0;
     width: 100%;
@@ -138,13 +141,15 @@
     margin: 0;
 }
 
-@media (min-width: 724px) {
+@media (min-width: 424px) {
     .ic-main-card-div {
         cursor: pointer;
         margin: 2%;
         padding: 3% 1%;
         width: 40%;
         transition: transform 0.8s;
+        height: 300px;
+        width: 200px;
     }
 
     .ic-main-card-div:hover {
@@ -184,6 +189,6 @@
     .ic-main-card-div {
         padding: 1%;
         width: 20%;
-        min-height: 280px;
+        height: 280px;
     }
 }
