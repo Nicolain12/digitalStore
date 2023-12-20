@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './screen/Home/home'
 import AllProductsList from './screen/allProductsList/allProductsList'
 import ItemDetalScreen from './screen/itemDetailScreen/itemDetalScreen'
+import CartScreen from './screen/cart/cartScreen'
 import './App.css'
 import Layout from './screen/layout/layout'
 function App() {
@@ -24,7 +25,7 @@ function App() {
             <Route exact path="/allProducts" element={<AllProductsList />} />
             <Route exact path="/byMuscle" element={<AllProductsList byMuscle={true} />} />
             <Route exact path="/item/:id" element={<ItemDetalScreen />} />
-            {/* Cart */}
+              <Route exact path="/cart" element={<CartScreen/>} />
             {/****************** USER ******************/}
             {/* Profile */}
             {/* Loggin */}

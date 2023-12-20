@@ -6,10 +6,15 @@ function contextCart({ children }) {
     const [productsCart, setProductsCart] = useState({})
     const [cartLength, setCartLength] = useState(Object.getOwnPropertyNames(productsCart).length);
    
+    // UpdateCart length
     useEffect(() => {
         updateCartLength()
     }, [productsCart])
+    const updateCartLength = () => {
+        setCartLength(Object.getOwnPropertyNames(productsCart).length);
+    };
 
+    // Functions
     const addItem = (id, counter) => {
         const objKeys = Object.getOwnPropertyNames(productsCart)
         if (objKeys.length > 0) {
@@ -57,18 +62,26 @@ function contextCart({ children }) {
             return 0
         }
     }
-    const updateCartLength = () => {
-        setCartLength(Object.getOwnPropertyNames(productsCart).length);
-    };
-    const functionsContext = {
-        addItem,
-        rmvItem,
-        isInItem,
-        productsCart,
-        length: cartLength,
+    const showCartAsArr = () => {
+        const prodsArr = []
+        for (const prodId in productsCart) {
+            prodsArr.push(prodId)
+        }
+        return prodsArr
     }
+    
+
+
+
     return (
-        <DataContext.Provider value={functionsContext}>
+        <DataContext.Provider value={{
+            addItem,
+            rmvItem,
+            isInItem,
+            productsCart,
+            length: cartLength,
+            showCartAsArr
+        }}>
             {children}
         </DataContext.Provider>
     );
