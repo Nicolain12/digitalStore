@@ -8,12 +8,40 @@
     background-color: white;
 }
 
+.id-main-container.cartScreen {
+    width: 80%;
+    padding: 2%;
+    display: flex;
+    margin: 5% 0;
+    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0.1);
+    border-radius: 15px;
+}
+
 /* IMAGE */
+.id-img-icon-div {
+    position: absolute;
+    border-radius: 50%;
+    padding: 2%;
+    display: flex;
+    left: 5%;
+    top: 12%;
+    justify-content: center;
+    align-items: center;
+    opacity: 50%;
+    background-color: rgb(85, 85, 85);
+}
+
+.fa-regular.fa-heart.detail {
+    color: white;
+    font-size: 22px;
+}
+
 .id-img-div {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .id-img {
@@ -34,37 +62,41 @@
     width: 100%;
 }
 
-.id-info-inner-div.muscle{
-    border-top: 1px solid gray;
-}
-.id-info-inner-div.description{
-    border-top: 1px solid gray;
-}
-.id-info-inner-div.price{
+.id-info-inner-div.muscle {
     border-top: 1px solid gray;
 }
 
-.id-info-content.name{
+.id-info-inner-div.description {
+    border-top: 1px solid gray;
+}
+
+.id-info-inner-div.price {
+    border-top: 1px solid gray;
+}
+
+.id-info-content.name {
     font-size: 28px;
     margin: 0;
 }
 
-.id-info-content.muscle.title{
+.id-info-content.muscle.title {
     margin: 5% 0 2%;
     font-size: 20px;
 }
-.id-info-content.muscle.content{
+
+.id-info-content.muscle.content {
     font-size: 18px;
-    margin:0;
+    margin: 0;
 }
 
 .id-info-content.description.title {
     margin: 5% 0 2%;
     font-size: 20px;
 }
+
 .id-info-content.description.content {
     font-size: 18px;
-    margin:0;
+    margin: 0;
 }
 
 .id-info-content.price {
@@ -101,14 +133,56 @@
     background-color: rgb(88, 86, 86);
 }
 
-.id-button.favorite {
-    width: 20%;
-    background-color: red;
+/* Action Cart */
+.id-actions-buttons-div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.id-button.cart {
-    width: 20%;
-    background-color: #4F709C
+.id-actions-cart-div {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.id-action-cart-button-div {
+    height: fit-content;
+    border: 1px solid #4F709C;
+    padding: 0;
+    width: 30%;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.id-action-cart-button {
+    margin: 0;
+    width: 40%;
+    font-weight: 200;
+    color: white;
+    height: 100%;
+    background-color: #4F709C;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.id-action-cart-button i {
+    font-size: 14px;
+}
+
+.id-action-cart-button:hover i {
+    transform: scale(1.1);
+}
+
+.id-action-cart-counter {
+    margin: 0;
 }
 
 
@@ -125,12 +199,19 @@
         width: 50%;
     }
 
+    .id-img-icon-div {
+        left: 13%;
+        top: 15%;
+        padding: 1%;
+    }
+
     .id-info-div {
         width: 50%;
         height: 30em;
         justify-content: space-between;
     }
-    .id-info-content.muscle{
+
+    .id-info-content.muscle {
         font-size: 20px;
     }
 }

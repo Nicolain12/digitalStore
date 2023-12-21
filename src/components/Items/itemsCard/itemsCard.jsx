@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { DataContext } from '../../../context/contextCart';
 import './itemsCard.css'
 import { Link } from 'react-router-dom';
+import ImgDisplay from '../../imgDisplay/imgDisplay';
 
 
 function itemsCard({ id, name, muscle, price, image }) {
@@ -11,7 +12,7 @@ function itemsCard({ id, name, muscle, price, image }) {
     return (
         <Link  to={`/item/${id}`} className='ic-main-card-div'>
             <div className="ic-img-div">
-                <img className='ic-product-img' src={image} alt="" />
+                <ImgDisplay id={id} className='ic-product-img' src={image} />
             </div>
             <div className='ic-info-div'>
                 <h4 className='ic-info-name'>{name}</h4>
@@ -22,7 +23,8 @@ function itemsCard({ id, name, muscle, price, image }) {
                     <p className="ic-action-price">${price}</p>
                 </div>
                 <div className="ic-actions-buttons-div">
-                    {cartCount > 0 ? <div className='ic-action-cart-button-div'>
+                    {cartCount > 0 ? 
+                    <div className='ic-action-cart-button-div'>
                         <button  onClick={(e) => {
                             e.preventDefault()
                             rmvItem(id, setCartCount)
@@ -32,11 +34,11 @@ function itemsCard({ id, name, muscle, price, image }) {
                             e.preventDefault()
                             addItem(id, setCartCount)
                         }} className='ic-action-cart-button'><i className="fa-solid fa-plus"></i></button>
-                    </div> : <div onClick={(e) => {
+                    </div> :
+                     <div onClick={(e) => {
                         e.preventDefault()
                         addItem(id, setCartCount)
                     }} className='ic-action-button'><i  className="fa-solid fa-cart-shopping ic-item" ></i></div>}
-
                 </div>
             </div>
             <div className="ic-actions-cart-div">

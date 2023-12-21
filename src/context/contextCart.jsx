@@ -5,7 +5,6 @@ export const DataContext = createContext()
 function contextCart({ children }) {
     const [productsCart, setProductsCart] = useState({})
     const [cartLength, setCartLength] = useState(Object.getOwnPropertyNames(productsCart).length);
-   
     // UpdateCart length
     useEffect(() => {
         updateCartLength()

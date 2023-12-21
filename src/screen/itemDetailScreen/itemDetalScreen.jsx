@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './itemDetailScreen.css'
 import ItemDetail from '../../components/Items/itemDetail/itemDetail';
 import ItemsCard from '../../components/Items/itemsCard/itemsCard';
@@ -6,10 +6,12 @@ import { useParams } from 'react-router-dom';
 import { getDocs, collection } from 'firebase/firestore';
 import { dataCompile } from '../../modules/mainModules';
 import { db } from '../../config/firebase';
+import { DataContext } from '../../context/contextCart';
 
 const itemDetalScreen = () => {
-
     const { id } = useParams()
+    const { addItem, rmvItem, isInItem } = useContext(DataContext);
+    const [cartCount, setCartCount] = useState(isInItem(id))
     const [dbContent, setDbContent] = useState([])
     const [product, setProduct] = useState({})
     const [productRelated, setProductRelated] = useState([])
@@ -39,7 +41,7 @@ const itemDetalScreen = () => {
     }, [dbContent])
     return (
         <div className='ids-component'>
-            {loading ? <h1>Loading...</h1> : <ItemDetail product={product} />}
+            {loading ? <h1>Loading...</h1> : <ItemDetail addItem={addItem} rmvItem={rmvItem} cartCount={cartCount} setCartCount={setCartCount} product={product} />}
             {loading ? null :
                (productRelated.length > 0 ? <div className="ids-products-related-div">
                 <div className="ids-prod-related-title">
