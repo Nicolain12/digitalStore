@@ -4,6 +4,7 @@ import ItemsCard from '../../itemsCard/itemsCard';
 import { getDocs, collection } from 'firebase/firestore';
 import { dataCompile } from '../../../../modules/mainModules';
 import { db } from '../../../../config/firebase';
+import { SyncLoader } from 'react-spinners';
 
 function itemListContainer({ allProducts, onSale, byMuscle, filteredProducts }) {
     const [dbContent, setDbContent] = useState([])
@@ -38,17 +39,17 @@ function itemListContainer({ allProducts, onSale, byMuscle, filteredProducts }) 
                 {allProducts ?
                     (!loadingAP ? dbContent.map(product => (
                         <ItemsCard key={product.id} id={product.id} name={product.name} muscle={product.muscle.length > 1 ? product.muscle.join(', ') : product.muscle[0]} price={product.price} image={product.image} />
-                    )) : <h1>LOADING...</h1>)
+                    )) : <div className="loader"><SyncLoader color="#4F709C" /></div>)
                     : null}
                 {onSale ?
                     (!loadingOP ? ifOnSale.map(product => (
                         <ItemsCard key={product.id} id={product.id} name={product.name} muscle={product.muscle.length > 1 ? product.muscle.join(', ') : product.muscle[0]} price={product.price} image={product.image} />
-                    )) : <h1>LOADING...</h1>)
+                    )) : <div className="loader"><SyncLoader color="#4F709C" /></div>)
                     : null}
                 {byMuscle ?
                     (!loadingFP ? filteredProducts.map(product => (
                         <ItemsCard key={product.id} id={product.id} name={product.name} muscle={product.muscle.length > 1 ? `${product.muscle[0]}, ${product.muscle[1]}` : product.muscle[0]} price={product.price} image={product.image} />
-                    )) : <h1>LOADING...</h1>)
+                    )) : <div className="loader"><SyncLoader color="#4F709C" /></div>)
                     : null}
             </div>
         </div>

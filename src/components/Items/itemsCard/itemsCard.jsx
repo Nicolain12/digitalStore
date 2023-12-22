@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react'
 import { DataContext } from '../../../context/contextCart';
 import './itemsCard.css'
 import { Link } from 'react-router-dom';
-import ImgDisplay from '../../imgDisplay/imgDisplay';
 
 
 function itemsCard({ id, name, muscle, price, image }) {
@@ -12,7 +11,7 @@ function itemsCard({ id, name, muscle, price, image }) {
     return (
         <Link  to={`/item/${id}`} className='ic-main-card-div'>
             <div className="ic-img-div">
-                <ImgDisplay id={id} className='ic-product-img' src={image} />
+                <img id={id} className='ic-product-img' src={image} />
             </div>
             <div className='ic-info-div'>
                 <h4 className='ic-info-name'>{name}</h4>

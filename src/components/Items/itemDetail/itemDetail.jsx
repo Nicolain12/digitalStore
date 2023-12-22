@@ -1,22 +1,20 @@
 import React, { useState, useContext } from 'react';
 import './itemDetail.css'
 import { DataContext } from '../../../context/contextCart';
-import ImgDisplay from '../../imgDisplay/imgDisplay';
+import { Link } from 'react-router-dom';
 
 
 function itemDetail({ product, cartScreen, addItem, rmvItem, cartCount, setCartCount }) {
     const { isInItem } = useContext(DataContext);
     const [cartCountC, setCartCountC] = useState(isInItem(product.id))
     return (
-        <div className={`id-main-container ${cartScreen ? 'cartScreen' : null}`}>
+        <Link className={`id-main-container ${cartScreen ? 'cartScreen' : null}`} to={`/item/${product.id}`}>
             {/* Article Detail */}
-                <div className='id-img-icon-div'>
-                    <i className="fa-regular fa-heart detail"></i>
-                </div>
-            <div className="id-img-div">
-                <img className='id-img' src={product.image} alt="" />
+
+            <div className={`id-img-div ${cartScreen ? 'cartScreen' : null}`}>
+                <img className={`id-img ${cartScreen ? 'cartScreen' : null}`} src={product.image} alt="" />
             </div>
-            <div className="id-info-div">
+            <div className={`id-info-div ${cartScreen ? 'cartScreen' : null}`}>
                 <div className='id-info-inner-div name'>
                     <h2 className='id-info-content name'>{product.name}</h2>
                 </div>
@@ -24,10 +22,12 @@ function itemDetail({ product, cartScreen, addItem, rmvItem, cartCount, setCartC
                     <h4 className='id-info-content muscle title'>Muscle:</h4>
                     <p className='id-info-content muscle content'>{product.muscle}</p>
                 </div>
-                <div className='id-info-inner-div description'>
-                    <h4 className='id-info-content description title'>Details:</h4>
-                    <p className='id-info-content description content'>{product.description}</p>
-                </div>
+                {cartScreen ? null :
+                    <div className='id-info-inner-div description'>
+                        <h4 className='id-info-content description title'>Details:</h4>
+                        <p className='id-info-content description content'>{product.description}</p>
+                    </div>
+                }
                 <div className='id-info-inner-div price'>
                     <p className='id-info-content price'>$ {product.price}</p>
                 </div>
@@ -50,23 +50,28 @@ function itemDetail({ product, cartScreen, addItem, rmvItem, cartCount, setCartC
                     </div> :
                     <div className='id-info-inner-div buttons'>
                         <button className='id-button buy'>buy</button>
-                        <div className='id-action-cart-button-div'>
-                            <button onClick={(e) => {
-                                e.preventDefault()
-                                rmvItem(product.id, setCartCount)
-                            }} className='id-action-cart-button'><i className="fa-solid fa-minus"></i></button>
-                            <p className='id-action-cart-counter'>{cartCount}</p>
-                            <button onClick={(e) => {
+                        {cartCount > 0 ?
+                            <div className='id-action-cart-button-div'>
+                                <button onClick={(e) => {
+                                    e.preventDefault()
+                                    rmvItem(product.id, setCartCount)
+                                }} className='id-action-cart-button'><i className="fa-solid fa-minus"></i></button>
+                                <p className='id-action-cart-counter'>{cartCount}</p>
+                                <button onClick={(e) => {
+                                    e.preventDefault()
+                                    addItem(product.id, setCartCount)
+                                }} className='id-action-cart-button'><i className="fa-solid fa-plus"></i></button>
+                            </div> :
+                            <div onClick={(e) => {
                                 e.preventDefault()
                                 addItem(product.id, setCartCount)
-                            }} className='id-action-cart-button'><i className="fa-solid fa-plus"></i></button>
-                        </div>
+                            }} className='ic-action-button'><i className="fa-solid fa-cart-shopping ic-item" ></i></div>}
                     </div>
                 }
 
             </div>
 
-        </div>
+        </Link>
 
     );
 }

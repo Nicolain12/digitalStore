@@ -1,13 +1,3 @@
-.app-img {
-    width: 100%;
-    height: 100%;
-    border: 1px solid black;
-}
-
-.app-img-icon-div block {
-    display: none;
-}
-
 .app-img-icon-div {
     position: relative;
     bottom: 100%;
@@ -18,7 +8,6 @@
     align-items: center;
     width: 18%;
     height: 20%;
-
     background-color: rgb(85, 85, 85);
 }
 

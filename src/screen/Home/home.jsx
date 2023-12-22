@@ -1,6 +1,6 @@
 import React from 'react'
 import './home.css'
-import ItemListContainer from '../../components/Items/itemsList/itemListContainer/ItemListContainer'
+import ItemListContainer from '../../components/Items/itemsList/itemListContainer/itemListContainer'
 
 
 function home() {

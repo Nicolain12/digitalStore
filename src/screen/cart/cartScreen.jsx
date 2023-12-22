@@ -5,10 +5,11 @@ import ItemDetail from '../../components/Items/itemDetail/itemDetail'
 import { getDocs, collection } from 'firebase/firestore';
 import { dataCompile } from '../../modules/mainModules';
 import { db } from '../../config/firebase';
+import { SyncLoader } from 'react-spinners';
 
 
 function cartScreen(props) {
-    const { addItem, rmvItem, showCartAsArr } = useContext(DataContext);
+    const { addItem, rmvItem, showCartAsArr, clearCart } = useContext(DataContext);
     // DB
     const [dbContent, setDbContent] = useState([])
     const [cartFilter, setCartFilter] = useState([])
@@ -23,15 +24,23 @@ function cartScreen(props) {
             showCartAsArr().includes(element.id) ? cartArr.push(element) : null
         });
         setCartFilter(cartArr)
-    }, [dbContent])
+    }, [dbContent, showCartAsArr])
 
     return (
         <div className='cs-component'>
-            {loading ? <h1>Loading...</h1> : (
+            {loading ? <div className="loader"><SyncLoader color="#4F709C" /></div> : (
             cartFilter.length > 0 ?
             cartFilter.map(product => (<ItemDetail addItem={addItem} rmvItem={rmvItem} cartScreen={true} key={product.id} product={product} />))
-            : null //DISPLAY EMPTY CART RENDER
+            : <h1>Nothing on Cart</h1>
             )}
+            {loading ? null : 
+
+            (cartFilter.length > 0 ? <div className="cs-control-div">
+                <p className='cs-control-price'>$ 99999</p>
+                <button className='cs-control-button clear' onClick={()=>clearCart()}>Clear Cart</button>
+                <button className='cs-control-button buy'>Buy Cart</button>
+            </div> : null)
+            }
         </div>
     );
 }

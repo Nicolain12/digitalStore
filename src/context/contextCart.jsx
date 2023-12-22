@@ -12,8 +12,7 @@ function contextCart({ children }) {
     const updateCartLength = () => {
         setCartLength(Object.getOwnPropertyNames(productsCart).length);
     };
-
-    // Functions
+    // Functions Cart
     const addItem = (id, counter) => {
         const objKeys = Object.getOwnPropertyNames(productsCart)
         if (objKeys.length > 0) {
@@ -68,6 +67,9 @@ function contextCart({ children }) {
         }
         return prodsArr
     }
+    const clearCart = () => {
+        setProductsCart({})
+    }
     
 
 
@@ -79,7 +81,8 @@ function contextCart({ children }) {
             isInItem,
             productsCart,
             length: cartLength,
-            showCartAsArr
+            showCartAsArr,
+            clearCart
         }}>
             {children}
         </DataContext.Provider>
