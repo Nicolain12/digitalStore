@@ -1,5 +1,14 @@
 .cs-component {
     width: 90%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.cs-items-div{
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,6 +43,13 @@
     cursor: pointer;
 }
 
+.cs-empty-cart{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .cs-control-button.clear {
     background-color: rgb(129, 93, 93);
     border: 1px solid rgb(255, 0, 0);
@@ -65,7 +81,7 @@
     .cs-component {
         width: 80%;
     }
-
+   
     .cs-control-div {
         flex-direction: row;
     }
@@ -83,3 +99,10 @@
 
 }
 }
+/* @media (min-width: 1024px) {
+    .cs-items-div{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+} */

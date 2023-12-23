@@ -1,0 +1,8 @@
+.app-footer{
+    width: 100%;
+    margin-top: 5%;
+    height: 10vh;
+    background-color: #213555;
+    position: relative;
+    top: 100%;
+}

@@ -1,12 +1,18 @@
-.ilc-card-container-div{
+.ilc-card-container-div {
     width: 100%;
     display: flex;
     margin-top: 5%;
+    margin-bottom: 5%;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-}
-
+  }
+  
+  .horizontal-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    /* Add other styling as needed */
+  }
 @media (min-width: 724px){
     
 }

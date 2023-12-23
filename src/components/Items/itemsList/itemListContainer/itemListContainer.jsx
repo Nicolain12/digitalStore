@@ -35,17 +35,20 @@ function itemListContainer({ allProducts, onSale, byMuscle, filteredProducts }) 
 
     return (
         <div>
-            <div className="ilc-card-container-div">
+            <div className={`ilc-card-container-div ${onSale? 'home' : null}`}>
                 {allProducts ?
-                    (!loadingAP ? dbContent.map(product => (
+                    (!loadingAP ?
+                         dbContent.map(product => (
                         <ItemsCard key={product.id} id={product.id} name={product.name} muscle={product.muscle.length > 1 ? product.muscle.join(', ') : product.muscle[0]} price={product.price} image={product.image} />
-                    )) : <div className="loader"><SyncLoader color="#4F709C" /></div>)
+                    )) 
+                    : <div className="loader"><SyncLoader color="#4F709C" /></div>)
                     : null}
                 {onSale ?
                     (!loadingOP ? ifOnSale.map(product => (
                         <ItemsCard key={product.id} id={product.id} name={product.name} muscle={product.muscle.length > 1 ? product.muscle.join(', ') : product.muscle[0]} price={product.price} image={product.image} />
-                    )) : <div className="loader"><SyncLoader color="#4F709C" /></div>)
+                    )) : <div className="loader home"><SyncLoader color="#4F709C" /></div>)
                     : null}
+                    
                 {byMuscle ?
                     (!loadingFP ? filteredProducts.map(product => (
                         <ItemsCard key={product.id} id={product.id} name={product.name} muscle={product.muscle.length > 1 ? `${product.muscle[0]}, ${product.muscle[1]}` : product.muscle[0]} price={product.price} image={product.image} />

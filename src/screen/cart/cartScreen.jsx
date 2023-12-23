@@ -9,7 +9,7 @@ import { SyncLoader } from 'react-spinners';
 
 
 function cartScreen(props) {
-    const { addItem, rmvItem, showCartAsArr, clearCart } = useContext(DataContext);
+    const { addItem, rmvItem, showCartAsArr, clearCart, productsCart, cartPrice } = useContext(DataContext);
     // DB
     const [dbContent, setDbContent] = useState([])
     const [cartFilter, setCartFilter] = useState([])
@@ -21,25 +21,34 @@ function cartScreen(props) {
     useEffect(() => {
         const cartArr = []
         dbContent.forEach(element => {
-            showCartAsArr().includes(element.id) ? cartArr.push(element) : null
+            if (showCartAsArr().includes(element.id)) {
+                element.counter = productsCart[element.id]
+                cartArr.push(element)
+            }
         });
         setCartFilter(cartArr)
     }, [dbContent, showCartAsArr])
+   
 
     return (
         <div className='cs-component'>
-            {loading ? <div className="loader"><SyncLoader color="#4F709C" /></div> : (
-            cartFilter.length > 0 ?
-            cartFilter.map(product => (<ItemDetail addItem={addItem} rmvItem={rmvItem} cartScreen={true} key={product.id} product={product} />))
-            : <h1>Nothing on Cart</h1>
-            )}
-            {loading ? null : 
+            <div className="cs-items-div">
 
-            (cartFilter.length > 0 ? <div className="cs-control-div">
-                <p className='cs-control-price'>$ 99999</p>
-                <button className='cs-control-button clear' onClick={()=>clearCart()}>Clear Cart</button>
-                <button className='cs-control-button buy'>Buy Cart</button>
-            </div> : null)
+                {loading ? <div className="loader"><SyncLoader color="#4F709C" /></div> : (
+                    cartFilter.length > 0 ?
+                        cartFilter.map(product => (<ItemDetail addItem={addItem} rmvItem={rmvItem} cartScreen={true} key={product.id} product={product} />))
+                        : <div className='cs-empty-cart'>
+                            <h1>Nothing on Cart</h1>
+                        </div>
+                )}
+            </div>
+            {loading ? null :
+
+                (cartFilter.length > 0 ? <div className="cs-control-div">
+                    <p className='cs-control-price'>$ {cartPrice}</p>
+                    <button className='cs-control-button clear' onClick={() => clearCart()}>Clear Cart</button>
+                    <button className='cs-control-button buy'>Buy Cart</button>
+                </div> : null)
             }
         </div>
     );

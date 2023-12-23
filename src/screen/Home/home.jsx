@@ -8,7 +8,8 @@ function home() {
 
     return (
         <div className='screen-home'>
-            <h1>Banner here</h1>
+            <img className='home-banner' src="/banner/banner.png" alt="" />
+            <h2 className='home-title-onsale'>ON SALE 🏷️</h2>
             <ItemListContainer containerTitle={'On sale'} onSale={true} />
         </div>
     )

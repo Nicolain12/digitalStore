@@ -9,3 +9,12 @@
   justify-content: flex-start;
   align-items: center;
 }
+.loader{
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader.home{
+  height: 400px
+}

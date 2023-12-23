@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './allProductsList.css'
-import ItemListContainer from '../../components/Items/itemsList/itemListContainer/ItemListContainer';
+import ItemListContainer from '../../components/Items/itemsList/itemListContainer/itemListContainer';
 import ByMuscleSearch from '../../components/byMuscleSearch/byMuscleSearch';
 import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../../config/firebase';
